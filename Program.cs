@@ -12,35 +12,34 @@ namespace Ngrams
     {
         static void Main(string[] args)
         {
+            string text1 = string.Empty, text2 = string.Empty;
+            
             if (args.Length <= 2)
             {
-                Console.WriteLine("Input arguments is invalid! Default arguments set.");
-                args = new[] { "text1.txt", "text2.txt", "2" };
-                if (!File.Exists(args[0]))
-                    File.Create(args[0]);
-                if (!File.Exists(args[1]))
-                    File.Create(args[1]);
+                Console.WriteLine("Input arguments is invalid! Default texts and arguments set.");
+                args = new[] { "ulitka_na_sklone.txt", "bespokoystvo.txt", "2" };
             }
             //foreach (var e in args) Console.WriteLine(e);
 
             Stopwatch watch = new Stopwatch();
             watch.Start();
 
-            string text1 = File.ReadAllText(args[0], Encoding.Default);
-            string text2 = File.ReadAllText(args[1], Encoding.Default);
+            text1 = File.Exists(args[0]) ? File.ReadAllText(args[0], Encoding.Default) : Properties.Resources.ulitka_na_sklone;
+            text2 = File.Exists(args[1]) ? File.ReadAllText(args[1], Encoding.Default) : Properties.Resources.bespokoystvo;
+
             int n = int.Parse(args[2]);
             var grams1 = GetGrams(ParseSentences(text1), n);
             var grams2 = GetGrams(ParseSentences(text2), n);
 
-            Console.WriteLine($"Text №1: {args[0]}");
+            Console.WriteLine($"\nText №1: {args[0]}");
             Console.WriteLine($"Text №2: {args[1]}\n");
-            Console.WriteLine($"{n}-Grams count in Text №1:  {grams1.Count()}");
-            Console.WriteLine($"{n}-Grams count in Text №2:  {grams2.Count()}");
-            Console.WriteLine($"Jaccard Index: {"",12}{GetJaccardIndex(grams1, grams2)}");
+            Console.WriteLine($"{n}{"-Grams count in Text №1:",-26}{grams1.Count()}");
+            Console.WriteLine($"{n}{"-Grams count in Text №2:",-26}{grams2.Count()}");
+            Console.WriteLine($"{"Jaccard Index:",-27}{GetJaccardIndex(grams1, grams2):0.##########}");
 
             watch.Stop();
 
-            Console.WriteLine("\nOperations time: {0,11} ms", watch.ElapsedMilliseconds);
+            Console.WriteLine($"\n{"Operations time:",-27}{watch.ElapsedMilliseconds} ms");
 
             Console.ReadKey();
         }
