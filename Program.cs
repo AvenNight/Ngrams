@@ -19,7 +19,6 @@ namespace Ngrams
                 Console.WriteLine("Input arguments is invalid! Default texts and arguments set.");
                 args = new[] { "text1.txt", "text2.txt", "2" };
             }
-            //foreach (var e in args) Console.WriteLine(e);
 
             Stopwatch watch = new Stopwatch();
             watch.Start();
