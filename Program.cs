@@ -16,6 +16,10 @@ namespace Ngrams
             {
                 Console.WriteLine("Input arguments is invalid! Default arguments set.");
                 args = new[] { "text1.txt", "text2.txt", "2" };
+                if (!File.Exists(args[0]))
+                    File.Create(args[0]);
+                if (!File.Exists(args[1]))
+                    File.Create(args[1]);
             }
             //foreach (var e in args) Console.WriteLine(e);
 
@@ -36,7 +40,7 @@ namespace Ngrams
 
             watch.Stop();
 
-            Console.WriteLine("\nOperations time: {0,13} ms", watch.ElapsedMilliseconds);
+            Console.WriteLine("\nOperations time: {0,11} ms", watch.ElapsedMilliseconds);
 
             Console.ReadKey();
         }
