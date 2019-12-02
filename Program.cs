@@ -17,15 +17,15 @@ namespace Ngrams
             if (args.Length <= 2)
             {
                 Console.WriteLine("Input arguments is invalid! Default texts and arguments set.");
-                args = new[] { "ulitka_na_sklone.txt", "bespokoystvo.txt", "2" };
+                args = new[] { "text1.txt", "text2.txt", "2" };
             }
             //foreach (var e in args) Console.WriteLine(e);
 
             Stopwatch watch = new Stopwatch();
             watch.Start();
 
-            text1 = File.Exists(args[0]) ? File.ReadAllText(args[0], Encoding.Default) : Properties.Resources.ulitka_na_sklone;
-            text2 = File.Exists(args[1]) ? File.ReadAllText(args[1], Encoding.Default) : Properties.Resources.bespokoystvo;
+            text1 = File.Exists(args[0]) ? File.ReadAllText(args[0], Encoding.Default) : Properties.Resources.text1;
+            text2 = File.Exists(args[1]) ? File.ReadAllText(args[1], Encoding.Default) : Properties.Resources.text2;
 
             int n = int.Parse(args[2]);
             var grams1 = GetGrams(ParseSentences(text1), n);

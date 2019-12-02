@@ -1,0 +1,1 @@
+Ngrams.exe text1.txt text2.txt 2
