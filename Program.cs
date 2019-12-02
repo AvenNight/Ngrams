@@ -20,6 +20,7 @@ namespace Ngrams
                     File.Create(args[0]);
                 if (!File.Exists(args[1]))
                     File.Create(args[1]);
+                // loh
             }
             //foreach (var e in args) Console.WriteLine(e);
 
